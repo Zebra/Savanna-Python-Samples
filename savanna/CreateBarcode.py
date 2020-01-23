@@ -1,8 +1,8 @@
 import http
-import main.python.savanna.SavannaAPI as SavannaAPI
+from SavannaAPI import SavannaAPI
 import urllib.error
 import logging
-import main.python.savanna.Rotation as rotation
+from Rotation import Rotation as rotation
 
 """
 CreateBarcode --- Provides access to the Savanna barcode creation APIs.
@@ -14,28 +14,7 @@ CreateBarcode --- Provides access to the Savanna barcode creation APIs.
 class CreateBarcode:
 
     @staticmethod
-    def create(symbology, text):
-        """Generates a barcode from the text provided and returns a PNG image
-
-        @param symbology The barcode symbology.
-	    @param text      The data or text to include in the generated barcode.
-	                     Usually an error will occur when the barcode symbology
-	                     cannot support the text provided. Different symbology
-	                     allow for numbers only, or alpha-numeric, or uppercase
-	                     alphabets, and some restrict characters. For example:
-	                     code39 only accepts numbers and uppercase letters.
-	    @throws HTTPError Thrown if there is an error calling the service
-
-        """
-        try:
-            return create(symbology, text, 1, rotation.Normal, False)
-        except urllib.error.HTTPError as error:
-            logging.error(error)
-            raise
-    
-
-    @staticmethod
-    def create(symbology, text, scale, rotation, includeText):
+    def create(symbology, text, scale=1, rotation=rotation.Normal, includeText=False):
         """Generates a barcode from the text provided and returns a PNG image
 
         @param symbology The barcode symbology.
@@ -58,12 +37,12 @@ class CreateBarcode:
 
         """
         try:
-            return SavannaAPI.callServiceBytes("barcode/generate?symbology={}&text={}&scaleX={}&scaleY={}&rotate={}&includeText={}"
+            return SavannaAPI.callServiceBytes("barcode/generate?symbology={}&text={}&scale={}&rotate={}&includeText={}"
             .format(symbology, text, scale, rotation, includeText))
         except urllib.error.HTTPError as error:
             logging.error(error)
             raise
-    
+
 
     @staticmethod
     def create(symbology, text, scaleX, scaleY, rotation, includeText):

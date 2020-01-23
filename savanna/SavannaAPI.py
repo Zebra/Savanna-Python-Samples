@@ -19,11 +19,6 @@ class SavannaAPI:
     """
     APIKey = None
 
-    """
-    Retrieve a json string from a Barcode Intelligence Tools service.
-    param name="api" The API path of the tool being accessed.</param>
-    returns json returned by the API call.
-    """
     @staticmethod
     def callService(api):
         try:
@@ -31,10 +26,10 @@ class SavannaAPI:
         except url.error.HTTPError as error:
             logging.error(error)
             raise
-    
+
     @staticmethod
     def callServiceBytes(api):
-        uri = baseUrl + api
+        uri = SavannaAPI.baseUrl + api
 
         status = -1
         con = None
@@ -42,7 +37,7 @@ class SavannaAPI:
 
         payload = None
         headers = {
-        'Authorization': APIKey,
+        'Authorization': SavannaAPI.APIKey,
         }
         try:
             con = http.client.HTTPConnection(uri)
@@ -52,10 +47,10 @@ class SavannaAPI:
                 in_ = io.BufferedIOBase(con.read())
             except io.BlockingIOError as error:
                 in_ = io.BufferedIOBase(con.read())
-        
+
             out = None
 
-            buf =  bytearray(1024)
+            buf = bytearray(1024)
             n = 0
             while (-1 != in_.read(buf)):
                 out.io.BufferedIOBase.write(buf, 0, in_.read(buf))
@@ -67,12 +62,10 @@ class SavannaAPI:
             response = io.BufferedIOBase.readinto(out)
             status = con.status()
 
-        except url.error.HTTPError as error:
+        except e as error:
             traceback.print_exc()
         finally:
             con.close()
-        if(status >= 400):
-            logging.error(error)
+        #if(status >= 400):
+            #throw error
         return response
-            
-    

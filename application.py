@@ -1,11 +1,13 @@
 import os
 from time import sleep
-from CreateBarcode import create
-from FDARecall import deviceSearch, drugSearch, foodUpc
-from UPCLookup import lookup
+from CreateBarcode import CreateBarcode
+from FDARecall import FDARecall
+from UPCLookup import UPCLookup
+from SavannaAPI import SavannaAPI
 
 def display_title_bar():
     os.system('clear')
+    SavannaAPI.APIKey = ""
     print("\t**************************************************")
     print("\t*** Commandline Savanna-Python-SDK sample tool ***")
     print("\t**************************************************")
@@ -23,11 +25,11 @@ def run_CreateBarcode():
     params = command.split(', ')
     params_length = params.len()
     if(params_length == 2):
-        create(params[0], params[1])
+        CreateBarcode.create(params[0], params[1])
     if(params_length == 5):
-        create(params[0], params[1], params[2], params[3], params[4])
+        CreateBarcode.create(params[0], params[1], params[2], params[3], params[4])
     if(params_length == 6):
-        create(params[0], params[1], params[2], params[3], params[4], params[5])
+        CreateBarcode.create(params[0], params[1], params[2], params[3], params[4], params[5])
     
 
 def run_FDARecall():
@@ -46,29 +48,29 @@ def run_FDARecall():
     params_length = params.len()
     if(params_length == 2):
         if(params[0] == "deviceSearch"):
-            deviceSearch(params[1])
+            FDARecall.deviceSearch(params[1])
         if(params[0] == "drugSearch"):
-            drugSearch(params[1])
+            FDARecall.drugSearch(params[1])
         if(params[0] == "foodUpc"):
-            foodUpc(params[1])
+            FDARecall.foodUpc(params[1])
         if(params[0] == "drugUpc"):
-            drugUpc(params[1])
+            FDARecall.drugUpc(params[1])
     if(params_length == 3):
         if(params[0] == "deviceSearch"):
-            deviceSearch(params[1], params[2])
+            FDARecall.deviceSearch(params[1], params[2])
         if(params[0] == "drugSearch"):
-            deviceSearch(params[1], params[2])
+            FDARecall.deviceSearch(params[1], params[2])
         if(params[0] == "foodUpc"):
-            deviceSearch(params[1], params[2])
+            FDARecall.deviceSearch(params[1], params[2])
         if(params[0] == "drugUpc"):
-            deviceSearch(params[1], params[2])
+            FDARecall.deviceSearch(params[1], params[2])
     
 def run_UPCLookup():
     print("\tUPCLookup:")
     print("\tinput should follow:")
     print("\tupc (9781483922973)")
     command = input
-    lookup(command)
+    UPCLookup.lookup(command)
 
 def run_program():
     display_title_bar()
@@ -79,4 +81,3 @@ def run_program():
         run_FDARecall()
     if(prompt == '3'):
         run_UPCLookup()
-

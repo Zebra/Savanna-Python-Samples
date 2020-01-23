@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{157e18e2-41ff-4ca6-88cf-e1b6cdafc670}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile>CreateBarcode.py</StartupFile>
+    <SearchPath />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterId />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="CreateBarcode.py" />
+    <Compile Include="FDARecall.py" />
+    <Compile Include="Models\APIEnumConverter.py" />
+    <Compile Include="Models\BarcodeData.py" />
+    <Compile Include="Models\Classification.py" />
+    <Compile Include="Models\Data.py" />
+    <Compile Include="Models\Detail.py" />
+    <Compile Include="Models\Device.py" />
+    <Compile Include="Models\DeviceClass.py" />
+    <Compile Include="Models\Error.py" />
+    <Compile Include="Models\Fault.py" />
+    <Compile Include="Models\IResponse.py" />
+    <Compile Include="Models\Meta.py" />
+    <Compile Include="Models\MetaResults.py" />
+    <Compile Include="Models\Offer.py" />
+    <Compile Include="Models\OpenFDADevice.py" />
+    <Compile Include="Models\OpenFDAProduct.py" />
+    <Compile Include="Models\Product.py" />
+    <Compile Include="Models\ProductType.py" />
+    <Compile Include="Models\Recall.py" />
+    <Compile Include="Models\Status.py" />
+    <Compile Include="Rotation.py" />
+    <Compile Include="SavannaAPI.py" />
+    <Compile Include="Symbology.py" />
+    <Compile Include="UPCLookup.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+</Project>

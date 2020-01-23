@@ -1,6 +1,6 @@
- """
- Describes issues encountered while invoking an API.
- """
+"""
+Describes issues encountered while invoking an API.
+"""
 class Fault:
 
     def __init__(self, faultString, detail):

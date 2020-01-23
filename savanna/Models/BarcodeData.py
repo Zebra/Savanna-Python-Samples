@@ -1,6 +1,6 @@
- """
- Response object for UPC lookup
- """
+"""
+Response object for UPC lookup
+"""
 class BarcodeData:
 
     def __init__(self, code, total, offset, items):
@@ -35,8 +35,4 @@ class BarcodeData:
     """
     @property
     def items(self):
-        return self.__items
-
-   
-
-    
+        return self.__item

@@ -99,7 +99,3 @@ class Device:
     @property
     def rootCauseDescription(self):
         return self.__rootCauseDescription
-    
-
-
-    

@@ -166,4 +166,3 @@ class Data:
     @property
     def elid(self):
         return self.__elid
-    

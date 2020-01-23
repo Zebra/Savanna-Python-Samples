@@ -38,5 +38,5 @@ class Error:
     if no inner exception is specified.
     """
     @classmethod
-    def error(self, message = None, Exception = None):
+    def error(self, message=None, Exception=None):
         return self
