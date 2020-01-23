@@ -30,7 +30,7 @@ def run_CreateBarcode():
         CreateBarcode.create(params[0], params[1], params[2], params[3], params[4])
     if(params_length == 6):
         CreateBarcode.create(params[0], params[1], params[2], params[3], params[4], params[5])
-    
+
 
 def run_FDARecall():
     print("\tFDARecall:")
@@ -64,7 +64,7 @@ def run_FDARecall():
             FDARecall.deviceSearch(params[1], params[2])
         if(params[0] == "drugUpc"):
             FDARecall.deviceSearch(params[1], params[2])
-    
+
 def run_UPCLookup():
     print("\tUPCLookup:")
     print("\tinput should follow:")
@@ -75,7 +75,7 @@ def run_UPCLookup():
 def run_program():
     display_title_bar()
     prompt = input
-    if(prompt == '1'):     
+    if(prompt == '1'):
         run_CreateBarcode()
     if(prompt == '2'):
         run_FDARecall()
