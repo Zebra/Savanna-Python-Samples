@@ -31,7 +31,7 @@ def run_CreateBarcode():
     
 
 def run_FDARecall():
-    print("\FDARecall:")
+    print("\tFDARecall:")
     print("\tinput should follow:")
     print("\tdeviceSearch, search (deviceSearch, Device) or ")
     print("\tdeviceSearch, search, limit (deviceSearch, Device, 1) or")
@@ -41,10 +41,34 @@ def run_FDARecall():
     print("\foodUpc, upc, limit (foodUpc, 820267662041775209, 1)")
     print("\drugUpc, upc (drugUpc, 820267662041775209)")
     print("\drugUpc, upc, limit (drugUpc, 820267662041775209, 1)")
-
-
+    command = input
+    params = command.split(', ')
+    params_length = params.len()
+    if(params_length == 2):
+        if(params[0] == "deviceSearch"):
+            deviceSearch(params[1])
+        if(params[0] == "drugSearch"):
+            drugSearch(params[1])
+        if(params[0] == "foodUpc"):
+            foodUpc(params[1])
+        if(params[0] == "drugUpc"):
+            drugUpc(params[1])
+    if(params_length == 3):
+        if(params[0] == "deviceSearch"):
+            deviceSearch(params[1], params[2])
+        if(params[0] == "drugSearch"):
+            deviceSearch(params[1], params[2])
+        if(params[0] == "foodUpc"):
+            deviceSearch(params[1], params[2])
+        if(params[0] == "drugUpc"):
+            deviceSearch(params[1], params[2])
+    
 def run_UPCLookup():
-
+    print("\tUPCLookup:")
+    print("\tinput should follow:")
+    print("\tupc (9781483922973)")
+    command = input
+    lookup(command)
 
 def run_program():
     display_title_bar()
