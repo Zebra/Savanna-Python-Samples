@@ -12,6 +12,7 @@
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <InterpreterId />
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
+    <SearchPath>savanna</SearchPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
