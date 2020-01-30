@@ -1,6 +1,6 @@
 import http
-from SavannaAPI import SavannaAPI
-import urllib.error
+from savanna.SavannaAPI import SavannaAPI
+import urllib as url
 import logging
 from Rotation import Rotation as rotation
 
@@ -39,7 +39,7 @@ class CreateBarcode:
         try:
             return SavannaAPI.callServiceBytes("barcode/generate?symbology={}&text={}&scale={}&rotate={}&includeText={}"
             .format(symbology, text, scale, rotation, includeText))
-        except urllib.error.HTTPError as error:
+        except url.error.URLError as error:
             logging.error(error)
             raise
 
@@ -74,6 +74,6 @@ class CreateBarcode:
         try:
             return SavannaAPI.callServiceBytes("barcode/generate?symbology={}&text={}&scaleX={}&scaleY={}&rotate={}&includeText={}"
             .format(symbology, text, scaleX, scaleY, rotation, includeText))
-        except urllib.error.HTTPError as error:
+        except url.error.URLError as error:
             logging.error(error)
             raise

@@ -1,9 +1,9 @@
 import os
 from time import sleep
-from CreateBarcode import CreateBarcode
-from FDARecall import FDARecall
-from UPCLookup import UPCLookup
-from SavannaAPI import SavannaAPI
+from savanna.CreateBarcode import CreateBarcode
+from savanna.FDARecall import FDARecall
+from savanna.UPCLookup import UPCLookup
+from savanna.SavannaAPI import SavannaAPI
 
 def display_title_bar():
     os.system('clear')
