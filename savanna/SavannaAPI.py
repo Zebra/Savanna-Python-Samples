@@ -26,7 +26,7 @@ class SavannaAPI:
     @staticmethod
     def callService(api):
         try:
-            return json.dumps(callServiceBytes(api))
+            return callServiceBytes(api).decode("utf-8")
         except HTTPError as error:
             logging.error(error)
             raise
@@ -37,8 +37,6 @@ class SavannaAPI:
 
         status = -1
         con = None
-        response = []
-
         payload = None
 
         try:
@@ -55,11 +53,14 @@ class SavannaAPI:
         except HTTPError as error:
             logging.error(HTTPError)
 
-        finally:
-            con.close()
         try:
             if(status <= 400):
                 pass
+
         except HTTPError as error:
             logging(status)
+
+        finally:
+            con.close()
+
         return data
