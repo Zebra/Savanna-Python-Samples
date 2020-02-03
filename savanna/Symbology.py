@@ -118,3 +118,6 @@ class Symbology(Enum):
 	@staticmethod
 	def fromString(symbology):
 			return Symbology.value(symbology.replace('-', '_'))
+	
+	def get(self):
+		return self.value

@@ -1,8 +1,8 @@
 import http
-from SavannaAPI import SavannaAPI
+from savanna.SavannaAPI import SavannaAPI
 import urllib as url
 import logging
-from Rotation import Rotation as rotation
+import savanna.Rotation as rotation
 
 """
 UPCLookup --- Provides access to the Savanna UPC Lookup API.
@@ -24,6 +24,6 @@ class UPCLookup:
         """
         try:
             return SavannaAPI.callService("barcode/lookup?upc=" + upc)
-        except urllib.error as error:
+        except URLError as error:
             logging.error(error)
             raise

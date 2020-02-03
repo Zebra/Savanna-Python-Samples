@@ -1,5 +1,5 @@
 import http
-from SavannaAPI import SavannaAPI
+from savanna.SavannaAPI import SavannaAPI
 import urllib as url
 import logging
 
@@ -13,7 +13,7 @@ CreateBarcode --- Provides access to the Savanna barcode creation APIs.
 class FDARecall:
 
     @staticmethod
-    def deviceSearch(search, limit=1):
+    def deviceSearch(search, limit):
 
         """Returns medical device recall notices for a given description
 
@@ -26,14 +26,15 @@ class FDARecall:
         """
 
         try:
+            limit=1
             return SavannaAPI.callService("recalls/device/description?val={}&limit={}"
             .format(search, limit))
-        except urllib.error as error:
+        except URLError as error:
             logging.error(error)
             raise
 
     @staticmethod
-    def drugSearch(search, limit=1):
+    def drugSearch(search, limit):
 
         """Returns drug recall notices for a given description
 
@@ -45,14 +46,15 @@ class FDARecall:
         """
 
         try:
+            limit = 1
             return SavannaAPI.callService("recalls/drug/description?val={}&limit={}"
             .format(search, limit))
-        except urllib.error as error:
+        except URLError as error:
             logging.error(error)
             raise
 
     @staticmethod
-    def foodUpc(upc, limit=1):
+    def foodUpc(upc, limit):
 
         """Returns food recall notices for a given UPC code
 
@@ -64,9 +66,10 @@ class FDARecall:
         """
 
         try:
+            limit = 1
             return SavannaAPI.callService("recalls/food/upc?val={}&limit={}"
             .format(upc, limit))
-        except urllib.error as error:
+        except URLError as error:
             logging.error(error)
             raise
 
@@ -83,7 +86,7 @@ class FDARecall:
 
         try:
             return drugUpc(upc, 1)
-        except urllib.error as error:
+        except URLError as error:
             logging.error(error)
             raise
 
@@ -102,6 +105,6 @@ class FDARecall:
         try:
             return SavannaAPI.callService("recalls/drug/upc?val={}&limit={}"
             .format(upc, limit))
-        except urllib.error as error:
+        except URLError as error:
             logging.error(error)
             raise

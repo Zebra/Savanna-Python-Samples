@@ -12,3 +12,6 @@ class Rotation(Enum):
     Clockwise = "R"
     Inverted = "I"
     Counterclockwise = "L"
+
+    def get(self):
+        return self.value
