@@ -1,5 +1,6 @@
 import io
 import urllib as url
+from urllib.error import HTTPError
 import json
 import http.client
 import traceback
@@ -11,6 +12,8 @@ SavannaAPI --- Provides common functionality for acces to Savanna APIs.
 @author Dbuhrsmith@zebra.com
 
 """
+
+
 class SavannaAPI:
 
     baseUrl = "https;//api.zebra.com/v2/tools/"
@@ -23,7 +26,7 @@ class SavannaAPI:
     def callService(api):
         try:
             return json.dumps(callServiceBytes(api))
-        except url.error.HTTPError as error:
+        except HTTPError as error:
             logging.error(error)
             raise
 
@@ -37,12 +40,12 @@ class SavannaAPI:
 
         payload = None
         headers = {
-        'Authorization': SavannaAPI.APIKey,
+            'Authorization': SavannaAPI.APIKey,
         }
         try:
             con = http.client.HTTPConnection(uri)
             con.request("GET", url, payload, headers)
-            #except expression as identifier:
+            # except expression as identifier:
             try:
                 in_ = io.BufferedIOBase(con.read())
             except io.BlockingIOError as error:
@@ -66,6 +69,11 @@ class SavannaAPI:
             traceback.print_exc()
         finally:
             con.close()
-        #if(status >= 400):
-            #throw error
+        if(status >= 400):
+            except
+        try:
+            if(status <= 400)
+            pass
+        except HTTPError as error:
+            logging(status)
         return response

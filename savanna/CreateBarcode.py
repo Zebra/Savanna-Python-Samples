@@ -1,6 +1,6 @@
 import http
 from savanna.SavannaAPI import SavannaAPI
-import urllib as url
+from urllib.error import URLError
 import logging
 import savanna.Rotation as rotation
 

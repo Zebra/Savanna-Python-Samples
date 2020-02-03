@@ -5,6 +5,7 @@ from savanna.FDARecall import FDARecall
 from savanna.UPCLookup import UPCLookup
 from savanna.SavannaAPI import SavannaAPI
 
+
 def display_title_bar():
     os.system('clear')
     SavannaAPI.APIKey = ""
@@ -21,7 +22,7 @@ def run_CreateBarcode():
     print("\tsymbology, text (code39, HELLO-WORLD) or ")
     print("\tsymbology, text, scale, rotation, includeText (code39, HELLO-WORLD, 1, N, true) or")
     print("\tsymbology, text, scaleX, scaleY, rotation, includeText (code39, HELLO-WORLD, 1, 1, N, true)")
-    command = input
+    command = input("\tcommand: ")
     params = command.split(', ')
     params_length = params.len()
     if(params_length == 2):
@@ -43,7 +44,7 @@ def run_FDARecall():
     print("\foodUpc, upc, limit (foodUpc, 820267662041775209, 1)")
     print("\drugUpc, upc (drugUpc, 820267662041775209)")
     print("\drugUpc, upc, limit (drugUpc, 820267662041775209, 1)")
-    command = input
+    command = input("\tcommand: ")
     params = command.split(', ')
     params_length = params.len()
     if(params_length == 2):
@@ -68,16 +69,18 @@ def run_FDARecall():
 def run_UPCLookup():
     print("\tUPCLookup:")
     print("\tinput should follow:")
-    print("\tupc (9781483922973)")
-    command = input
+    print("\t9781483922973")
+    command = input("\tcommand: ")
     UPCLookup.lookup(command)
 
-def run_program():
+def main():
     display_title_bar()
-    prompt = input
+    prompt = input("\tEnter number 1 through 3: ")
     if(prompt == '1'):
         run_CreateBarcode()
     if(prompt == '2'):
         run_FDARecall()
     if(prompt == '3'):
         run_UPCLookup()
+
+main()
