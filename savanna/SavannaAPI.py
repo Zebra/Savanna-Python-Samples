@@ -1,10 +1,6 @@
 import io
 import http.client
-import urllib as url
 from urllib.error import HTTPError
-import json
-import http.client
-import traceback
 import logging
 
 """
@@ -17,16 +13,17 @@ SavannaAPI --- Provides common functionality for acces to Savanna APIs.
 
 class SavannaAPI:
 
-    baseUrl = "api,zebra,com/v2/tools/"
+    baseUrl = "api.zebra.com"
     """
     Your Zebra Savanna application key
     """
-    APIKey = None
+    APIKey = "dquukdgDLgG4nZ0hTDL2lvdpleRkLsfM"
 
     @staticmethod
     def callService(api):
         try:
-            return callServiceBytes(api).decode("utf-8")
+            payload = SavannaAPI.callServiceBytes(api)
+            return payload.decode("utf-8")
         except HTTPError as error:
             logging.error(error)
             raise
@@ -34,19 +31,17 @@ class SavannaAPI:
     @staticmethod
     def callServiceBytes(api):
         uri = SavannaAPI.baseUrl + api
-
-        status = -1
-        con = None
-        payload = None
+        headers = {'Authorization': "", 'cache-control': "no-cache"}
+        payload = "" 
 
         try:
-            headers = {'Authorization': SavannaAPI.APIKey}
-            con = http.client.HTTPConnection(uri)
-            con.request("GET", url, payload, headers)
+            con = http.client.HTTPConnection(SavannaAPI.baseUrl)
+            con.request("GET", api, payload, headers)
 
             res = con.getresponse()
             status = res.status
             if(status != 200):
+                logging.error("Request Status: "+ str(status))
                 raise
             data = res.read()
 
