@@ -7,7 +7,7 @@ from savanna.SavannaAPI import SavannaAPI
 
 
 def display_title_bar():
-    os.system('clear')
+    os.system('cls' if os.name == 'nt' else 'clear')
     SavannaAPI.APIKey = ""
     print("\t**************************************************")
     print("\t*** Commandline Savanna-Python-SDK sample tool ***")

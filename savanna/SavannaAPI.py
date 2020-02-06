@@ -12,8 +12,8 @@ SavannaAPI --- Provides common functionality for acces to Savanna APIs.
 
 
 class SavannaAPI:
-
-    baseUrl = "https://api.zebra.com/v2/tools"
+    host = "api.zebra.com"
+    baseUrl = "https://" + host + "/v2/tools/"
     """
     Your Zebra Savanna application key
     """
@@ -34,15 +34,15 @@ class SavannaAPI:
         payload = "" 
 
         try:
-            con = http.client.HTTPSConnection(SavannaAPI.baseUrl)
-            con.request("GET", api, payload, headers)
+            con = http.client.HTTPSConnection(SavannaAPI.host)
+            con.request("GET", SavannaAPI.baseUrl + api, payload, headers)
 
             res = con.getresponse()
             status = res.status
+            data = res.read()
             if(status != 200):
                 logging.error("Request Status: "+ str(status))
-                raise
-            data = res.read()
+                raise 
 
         except HTTPError as error:
             logging.error(HTTPError)
