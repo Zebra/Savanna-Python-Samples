@@ -17,7 +17,7 @@ class SavannaAPI:
     """
     Your Zebra Savanna application key
     """
-    APIKey = None
+    APIKey = ""
 
     @staticmethod
     def callService(api):

@@ -1,8 +1,8 @@
 import http
-from savanna.SavannaAPI import SavannaAPI
+from SavannaAPI import SavannaAPI
 from urllib.error import URLError
 import logging
-import savanna.Rotation as rotation
+import Rotation as rotation
 
 """
 CreateBarcode --- Provides access to the Savanna barcode creation APIs.
@@ -14,9 +14,8 @@ CreateBarcode --- Provides access to the Savanna barcode creation APIs.
 
 class CreateBarcode:
 
-    # //TODO rotation.Normal.get() Does not work skipping problem for now will come back.
     @staticmethod
-    def create(symbology, text, scale, rotation, includeText):
+    def create(symbology, text, scale = 1, rotation = rotation.Rotation.get(rotation.Rotation.Normal), includeText = False):
         """Generates a barcode from the text provided and returns a PNG image
 
         @param symbology The barcode symbology.
@@ -39,9 +38,6 @@ class CreateBarcode:
 
         """
         try:
-            scale = 1
-            includeText = False
-            rotation = "N"
             return SavannaAPI.callServiceBytes("barcode/generate?symbology={}&text={}&scale={}&rotate={}&includeText={}"
                                         .format(symbology, text, scale, rotation, includeText))
         except URLError as error:

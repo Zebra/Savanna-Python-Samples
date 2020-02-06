@@ -1,5 +1,5 @@
 import http
-from savanna.SavannaAPI import SavannaAPI
+from SavannaAPI import SavannaAPI
 from urllib.error import URLError
 import logging
 
@@ -13,7 +13,7 @@ CreateBarcode --- Provides access to the Savanna barcode creation APIs.
 class FDARecall:
 
     @staticmethod
-    def deviceSearch(search, limit):
+    def deviceSearch(search, limit = 1):
 
         """Returns medical device recall notices for a given description
 
@@ -26,7 +26,6 @@ class FDARecall:
         """
 
         try:
-            limit=1
             return SavannaAPI.callService("recalls/device/description?val={}&limit={}"
             .format(search, limit))
         except URLError as error:
@@ -34,7 +33,7 @@ class FDARecall:
             raise
 
     @staticmethod
-    def drugSearch(search, limit):
+    def drugSearch(search, limit = 1):
 
         """Returns drug recall notices for a given description
 
@@ -46,7 +45,6 @@ class FDARecall:
         """
 
         try:
-            limit = 1
             return SavannaAPI.callService("recalls/drug/description?val={}&limit={}"
             .format(search, limit))
         except URLError as error:
@@ -54,7 +52,7 @@ class FDARecall:
             raise
 
     @staticmethod
-    def foodUpc(upc, limit):
+    def foodUpc(upc, limit = 1):
 
         """Returns food recall notices for a given UPC code
 
@@ -66,7 +64,6 @@ class FDARecall:
         """
 
         try:
-            limit = 1
             return SavannaAPI.callService("recalls/food/upc?val={}&limit={}"
             .format(upc, limit))
         except URLError as error:
@@ -74,24 +71,7 @@ class FDARecall:
             raise
 
     @staticmethod
-    def drugUpc(upc):
-
-        """Returns FDA drug recall notices for a UPC code
-
-        @param upc Value
-        @return A JSONObject containing a result from the drug recall lookup, if any
-	    @throws HTTPError Thrown if there is an error calling the service
-
-        """
-
-        try:
-            return drugUpc(upc, 1)
-        except URLError as error:
-            logging.error(error)
-            raise
-
-    @staticmethod
-    def drugUpc(upc):
+    def drugUpc(upc, limit = 1):
 
         """Returns FDA drug recall notices for a UPC code
 
