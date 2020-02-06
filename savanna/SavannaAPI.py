@@ -13,11 +13,11 @@ SavannaAPI --- Provides common functionality for acces to Savanna APIs.
 
 class SavannaAPI:
 
-    baseUrl = "api.zebra.com"
+    baseUrl = "https://api.zebra.com/v2/tools"
     """
     Your Zebra Savanna application key
     """
-    APIKey = "dquukdgDLgG4nZ0hTDL2lvdpleRkLsfM"
+    APIKey = None
 
     @staticmethod
     def callService(api):
@@ -30,12 +30,11 @@ class SavannaAPI:
 
     @staticmethod
     def callServiceBytes(api):
-        uri = SavannaAPI.baseUrl + api
-        headers = {'Authorization': "", 'cache-control': "no-cache"}
+        headers = {'Authorization': SavannaAPI.APIKey, 'cache-control': "no-cache"}
         payload = "" 
 
         try:
-            con = http.client.HTTPConnection(SavannaAPI.baseUrl)
+            con = http.client.HTTPSConnection(SavannaAPI.baseUrl)
             con.request("GET", api, payload, headers)
 
             res = con.getresponse()

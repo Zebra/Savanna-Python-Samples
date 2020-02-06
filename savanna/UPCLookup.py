@@ -24,7 +24,7 @@ class UPCLookup:
 
         """
         try:
-            return SavannaAPI.callService("/v2/tools/barcode/lookup?upc=" + upc)
+            return SavannaAPI.callService("barcode/lookup?upc=" + upc)
         except URLError as error:
             logging.error(error)
             raise
