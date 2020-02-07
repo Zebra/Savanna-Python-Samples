@@ -17,7 +17,7 @@ class SavannaAPI:
     """
     Your Zebra Savanna application key
     """
-    APIKey = "dquukdgDLgG4nZ0hTDL2lvdpleRkLsfM"
+    APIKey = ""
 
     @staticmethod
     def callService(api):
@@ -30,7 +30,7 @@ class SavannaAPI:
 
     @staticmethod
     def callServiceBytes(api):
-        headers = {'apikey': "dquukdgDLgG4nZ0hTDL2lvdpleRkLsfM", 'cache-control': "no-cache"}
+        headers = {'apikey': SavannaAPI.APIKey, 'cache-control': "no-cache"}
         payload = "" 
 
         try:
