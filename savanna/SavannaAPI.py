@@ -17,20 +17,20 @@ class SavannaAPI:
     """
     Your Zebra Savanna application key
     """
-    APIKey = None
+    APIKey = "dquukdgDLgG4nZ0hTDL2lvdpleRkLsfM"
 
     @staticmethod
     def callService(api):
         try:
             payload = SavannaAPI.callServiceBytes(api)
-            return payload.decode("utf-8")
+            print(payload.decode("utf-8"))
         except HTTPError as error:
             logging.error(error)
             raise
 
     @staticmethod
     def callServiceBytes(api):
-        headers = {'Authorization': SavannaAPI.APIKey, 'cache-control': "no-cache"}
+        headers = {'apikey': "dquukdgDLgG4nZ0hTDL2lvdpleRkLsfM", 'cache-control': "no-cache"}
         payload = "" 
 
         try:
