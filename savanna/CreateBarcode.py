@@ -33,7 +33,7 @@ class CreateBarcode:
             scale = 1
             includeText = False
             rotation = "N"
-            return SavannaAPI.callService("barcode/generate?symbology={}&text={}&scale={}&rotate={}&includeText={}"
+            return SavannaAPI.callServiceBytes("barcode/generate?symbology={}&text={}&scale={}&rotate={}&includeText={}"
                                         .format(symbology, text, scale, rotation, includeText))
         except URLError as error:
             logging.error(error)
@@ -67,7 +67,7 @@ class CreateBarcode:
             scale = 1
             includeText = False
             rotation = "N"
-            return SavannaAPI.callService("barcode/generate?symbology={}&text={}&scale={}&rotate={}&includeText={}"
+            return SavannaAPI.callServiceBytes("barcode/generate?symbology={}&text={}&scale={}&rotate={}&includeText={}"
                                         .format(symbology, text, scale, rotation, includeText))
         except URLError as error:
             logging.error(error)

@@ -31,7 +31,7 @@ class SavannaAPI:
     @staticmethod
     def callServiceBytes(api):
         headers = {'apikey': SavannaAPI.APIKey, 'cache-control': "no-cache"}
-        payload = "" 
+        payload = None 
 
         try:
             con = http.client.HTTPSConnection(SavannaAPI.host)
@@ -56,5 +56,5 @@ class SavannaAPI:
 
         finally:
             con.close()
-
+        
         return data

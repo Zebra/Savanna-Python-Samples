@@ -26,11 +26,13 @@ def run_CreateBarcode():
     params = command.split(', ')
     params_length = len(params)
     if(params_length == 2):
-        CreateBarcode.create_symbology_text(params[0], params[1])
+        fileBytes = CreateBarcode.create_symbology_text(params[0], params[1])
     if(params_length == 5):
-        CreateBarcode.create_symbology_text_scale_rotation_includeText(params[0], params[1], params[2], params[3], params[4])
+        fileBytes = CreateBarcode.create_symbology_text_scale_rotation_includeText(params[0], params[1], params[2], params[3], params[4])
     if(params_length == 6):
-        CreateBarcode.create_symbology_text_scaleX_scaleY_rotation_includeText(params[0], params[1], params[2], params[3], params[4], params[5])
+        fileBytes = CreateBarcode.create_symbology_text_scaleX_scaleY_rotation_includeText(params[0], params[1], params[2], params[3], params[4], params[5])
+    barcodeFile = open("barcode.png", "wb")
+    barcodeFile.write(fileBytes)
 
 
 def run_FDARecall():
