@@ -30,16 +30,12 @@ class CreateBarcode:
 
         """
         try:
-            scale = 1
-            includeText = False
-            rotation = "N"
-            return SavannaAPI.callServiceBytes("barcode/generate?symbology={}&text={}&scale={}&rotate={}&includeText={}"
-                                        .format(symbology, text, scale, rotation, includeText))
+            return SavannaAPI.callServiceBytes("barcode/generate?symbology={}&text={}"
+                                        .format(symbology, text))
         except URLError as error:
             logging.error(error)
             raise
 
-    # //TODO rotation.Normal.get() Does not work skipping problem for now will come back.
     @staticmethod
     def create_symbology_text_scale_rotation_includeText(symbology, text, scale, rotation, includeText):
         """Generates a barcode from the text provided and returns a PNG image
@@ -64,16 +60,12 @@ class CreateBarcode:
 
         """
         try:
-            scale = 1
-            includeText = False
-            rotation = "N"
             return SavannaAPI.callServiceBytes("barcode/generate?symbology={}&text={}&scale={}&rotate={}&includeText={}"
                                         .format(symbology, text, scale, rotation, includeText))
         except URLError as error:
             logging.error(error)
             raise
 
-    # //TODO rotation.Normal.get() Does not work skipping problem for now will come back.
     @staticmethod
     def create_symbology_text_scaleX_scaleY_rotation_includeText(symbology, text, scaleX, scaleY, rotation, includeText):
         """Generates a barcode from the text provided and returns a PNG image
