@@ -14,25 +14,25 @@ class BarcodeData:
     """
     @property
     def code(self):
-        return self.__code
+        return self._code
 
     """
     The total number of records matching the search criteria.
     """
     @property
     def total(self):
-        return self.__total
+        return self._total
     
     """
     The Offset (page) of results.
     """
     @property
     def offset(self):
-        return self.__offset
+        return self._offset
     
     """
     Collection of items matching the UPC lookup query.
     """
     @property
     def items(self):
-        return self.__item
+        return self._items

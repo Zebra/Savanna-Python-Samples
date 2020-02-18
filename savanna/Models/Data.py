@@ -34,35 +34,35 @@ class Data:
     """
     @property
     def EAN(self):
-        return self.__EAN
+        return self._EAN
 
     """
     Item title
     """
     @property
     def title(self):
-        return self.__title
+        return self._title
     
     """
     Item description with length &lt; 515.
     """
     @property
     def description(self):
-        return self.__description
+        return self._description
     
     """
     Collection of image urls.
     """
     @property
     def images(self):
-        return self.__images
+        return self._images
 
     """
     Offers for item provided by merchants.
     """
     @property
     def offers(self):
-        return self.__offers
+        return self._offers
 
     """
     Amazon Standard Identification Number (ASIN) is a 10-character alphanumeric unique identifier assigned by
@@ -70,7 +70,7 @@ class Data:
     """
     @property
     def asin(self):
-        return self.__asin
+        return self._asin
 
     """
     International Standard Book Numbers (ISBN) are numeric commercial book identifiers which are intended to be
@@ -78,14 +78,14 @@ class Data:
     """
     @property
     def isbn(self):
-        return self.__isbn
+        return self._isbn
 
     """
     Publisher name
     """
     @property
     def publisher(self):
-        return self.__publisher
+        return self._publisher
 
     """
     UPC-A, 12-digit Universal Product Code (aka. GTIN-12). If item’s EAN does not start with 0, there is no
@@ -93,49 +93,49 @@ class Data:
     """
     @property
     def upc(self):
-        return self.__upc
+        return self._upc
 
     """
     Brand name or manufacturer name with length &lt; 64.
     """
     @property
     def brand(self):
-        return self.__brand
+        return self._brand
 
     """
     Item model number with length &lt; 32.
     """
     @property
     def model(self):
-        return self.__model
+        return self._model
 
     """
     Item color with length &lt; 32, ex. for clothing, shoes.
     """
     @property
     def color(self):
-        return self.__color
+        return self._color
 
     """
     Item size with length &lt; 32, ex. for clothing, shoes.
     """
     @property
     def size(self):
-        return self.__size
+        return self._size
 
     """
     Item model number with length &lt; 32.
     """
     @property
     def dimension(self):
-        return self.__dimension
+        return self._dimension
 
     """
     Item weight with length &lt; 16.
     """
     @property
     def weight(self):
-        return self.__weight
+        return self._weight
 
     """
     Currency of the <see cref="lowestRecordedPrice"/>. Can be "USD", "CAD", "EUR", "GBP", "SEK". Default ""
@@ -143,21 +143,21 @@ class Data:
     """
     @property
     def currency(self):
-        return self.__currency
+        return self._currency
 
     """
     Lowest historical price of the item since tracked by our system. Not available for books.
     """
     @property
     def lowestRecordedPrice(self):
-        return self.__lowestRecordedPrice
+        return self._lowestRecordedPrice
 
     """
     Highest historical price of the item since tracked by our system. Not available for books.   
     """
     @property
     def highestRecordedPrice(self):
-        return self.__highestRecordedPrice
+        return self._highestRecordedPrice
 
     """
     eBay Listing ID, aka. item ID or item number. Item ID is 9 to 12 digits in length. If item is found on
@@ -165,4 +165,4 @@ class Data:
     """
     @property
     def elid(self):
-        return self.__elid
+        return self._elid

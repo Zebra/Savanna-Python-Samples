@@ -24,14 +24,14 @@ class Device:
     """
     @property
     def eventDateTerminated(self):
-        return self.__dateTime
+        return self._dateTime
 
     """
     Facility identifier assigned to facility by the FDA Office of Regulatory Affairs.
     """
     @property
     def firmFEINumber(self):
-        return self.__firmFEINumber
+        return self._firmFEINumber
 
     """
     FDA-assigned premarket notification number, including leading letters. Leading letters "BK" indicates
@@ -41,14 +41,14 @@ class Device:
     """
     @property
     def knumbers(self):
-        return self.__knumbers
+        return self._knumbers
 
     """
     Information about the recalled medical device.
     """
     @property
     def openFDA(self):
-        return self.__openFDA
+        return self._openFDA
 
     """
     If 510(k) or PMA numbers are not applicable to the device recalled, the recall may contain other regulatory
@@ -56,7 +56,7 @@ class Device:
     """
     @property
     def otherSubmissionDescription(self):
-        return self.__otherSubmissionDescription
+        return self._otherSubmissionDescription
 
     """
     FDA-assigned premarket application number, including leading letters. Leading letter "D" indicates Product
@@ -67,7 +67,7 @@ class Device:
     """
     @property
     def pmaNumbers(self):
-        return self.__pmaNumbers
+        return self._pmaNumbers
 
     """
     A three-letter identifier assigned to a device category. Assignment is based upon the medical device
@@ -76,21 +76,21 @@ class Device:
     """
     @property
     def productCode(self):
-        return self.__productCode
+        return self._productCode
 
     """
     The product's number in the Recall Enterprise System.
     """
     @property
     def productResNumber(self):
-        return self.__productResNumber
+        return self._productResNumber
 
     """
     A five digit, numerical designation assigned by FDA to a specific recall event used for tracking purposes.
     """
     @property
     def resEventNumber(self):
-        return self.__resEventNumber
+        return self._resEventNumber
 
     """
     FDA determined general type of recall cause. Per FDA policy, recall cause determinations are subject to
@@ -98,4 +98,4 @@ class Device:
     """
     @property
     def rootCauseDescription(self):
-        return self.__rootCauseDescription
+        return self._rootCauseDescription

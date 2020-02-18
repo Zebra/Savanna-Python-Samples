@@ -11,11 +11,11 @@ class Fault:
     """
     @property
     def faultString(self):
-        return self.__faultString
+        return self._faultString
     
     """
     Provides details about the results of the API call.
     """
     @property
     def detail(self):
-        return self.__detail
+        return self._detail

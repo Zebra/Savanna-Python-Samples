@@ -4,31 +4,31 @@ Thrown when a Savanna API call does not succeed.
 
 class Error:
 
-    def __init__(self, code, info, developerMessage):
+    def __init__(self, code, info, message):
         self.code = code
         self.info = info
-        self.developerMessage = developerMessage
+        self.message = message
 
     """
     The status code returned by the API.
     """
     @property
     def code(self):
-        return self.__code
+        return self._code
 
     """
     Link to a web page providing more information about result of the API call.
     """
     @property
     def info(self):
-        return self.__info
+        return self._info
     
     """
     Provides information about the result of the API call.
     """
     @property
-    def developerMessage(self):
-        return self.__developerMessage
+    def message(self):
+        return self._message
     """
     Initializes a new instance of the System.Exception class with a specified error message and a reference to
     the inner exception that is the cause of this exception.

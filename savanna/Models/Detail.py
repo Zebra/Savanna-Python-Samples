@@ -12,4 +12,4 @@ class Detail:
     """
     @property
     def errorcode(self):
-        return self.__errorcode
+        return self._errorcode
