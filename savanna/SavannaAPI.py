@@ -44,7 +44,7 @@ class SavannaAPI:
             data = res.read()
             if(status != 200 and status is not None):
                 error = SavannaAPI.throwError(status, data)
-                raise 
+                logging.error(Error.__str__(error))              
 
         except HTTPError as error:
             logging.error(HTTPError)
@@ -64,6 +64,7 @@ class SavannaAPI:
     @staticmethod
     def throwError(status, data):
         thawed = jsonpickle.decode(data)
-        Error.code == thawed.code
-        Error.info == thawed.info
-        Error.message == thawed.message
+        code = thawed['errorResponse']['code']
+        info = thawed['errorResponse']['info']
+        message = thawed['errorResponse']['message']
+        return Error(code,info,message)

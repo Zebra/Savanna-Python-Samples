@@ -15,6 +15,10 @@ class Error:
     @property
     def code(self):
         return self._code
+    
+    @code.setter
+    def code(self, code):
+        self._code = code
 
     """
     Link to a web page providing more information about result of the API call.
@@ -22,6 +26,10 @@ class Error:
     @property
     def info(self):
         return self._info
+
+    @info.setter
+    def info(self, info):
+        self._info = info
     
     """
     Provides information about the result of the API call.
@@ -29,14 +37,13 @@ class Error:
     @property
     def message(self):
         return self._message
-    """
-    Initializes a new instance of the System.Exception class with a specified error message and a reference to
-    the inner exception that is the cause of this exception.
 
-    param name="message">The error message that explains the reason for the exception.</param>
-    param name="Exception">The exception that is the cause of the current exception, or a null reference
-    if no inner exception is specified.
+    @message.setter
+    def message(self, message):
+        self._message = message
     """
-    @classmethod
-    def error(self, message=None, Exception=None):
-        return self
+    String version of the Error message formated for the console.
+    """
+    def __str__(self):
+        errorString = "\nError Code: {}\nInfo: {}\nMessage:{}\n".format(self.code,self.info,self.message)
+        return errorString
