@@ -1,4 +1,6 @@
 import os
+import logging
+from pathlib import Path
 from time import sleep
 from savanna.CreateBarcode import CreateBarcode
 from savanna.FDARecall import FDARecall
@@ -23,17 +25,18 @@ def run_CreateBarcode():
     print("\tsymbology, text, scale, rotation, includeText (code39, HELLO-WORLD, 1, N, true) or")
     print("\tsymbology, text, scaleX, scaleY, rotation, includeText (code39, HELLO-WORLD, 1, 1, N, true)")
     command = input("\tcommand: ")
-    params = command.split(', ')
-    params_length = len(params)
-    if(params_length == 2):
-        fileBytes = CreateBarcode.create_symbology_text(params[0], params[1])
-    if(params_length == 5):
-        fileBytes = CreateBarcode.create_symbology_text_scale_rotation_includeText(params[0], params[1], params[2], params[3], params[4])
-    if(params_length == 6):
-        fileBytes = CreateBarcode.create_symbology_text_scaleX_scaleY_rotation_includeText(params[0], params[1], params[2], params[3], params[4], params[5])
-    barcodeFile = open("barcode.png", "wb")
-    barcodeFile.write(fileBytes)
-
+    if(checkCommand(command)):
+        params = command.split(', ')
+        params_length = len(params)
+        if(params_length == 2):
+            fileBytes = CreateBarcode.create_symbology_text(params[0], params[1])
+        if(params_length == 5):
+            fileBytes = CreateBarcode.create_symbology_text_scale_rotation_includeText(params[0], params[1], params[2], params[3], params[4])
+        if(params_length == 6):
+            fileBytes = CreateBarcode.create_symbology_text_scaleX_scaleY_rotation_includeText(params[0], params[1], params[2], params[3], params[4], params[5])
+        barcodeFile = open("barcode.png", "wb")
+        barcodeFile.write(fileBytes)
+        print("File      Path:", Path(barcodeFile).absolute())
 
 def run_FDARecall():
     print("\tFDARecall:")
@@ -47,26 +50,27 @@ def run_FDARecall():
     print("\tdrugUpc, upc (drugUpc, 820267662041775209)")
     print("\tdrugUpc, upc, limit (drugUpc, 820267662041775209, 1)")
     command = input("\tcommand: ")
-    params = command.split(', ')
-    params_length = len(params)
-    if(params_length == 2):
-        if(params[0] == "deviceSearch"):
-            FDARecall.deviceSearch(params[1])
-        if(params[0] == "drugSearch"):
-            FDARecall.drugSearch(params[1])
-        if(params[0] == "foodUpc"):
-            FDARecall.foodUpc(params[1])
-        if(params[0] == "drugUpc"):
-            FDARecall.drugUpc(params[1])
-    if(params_length == 3):
-        if(params[0] == "deviceSearch"):
-            FDARecall.deviceSearch_limit(params[1], params[2])
-        if(params[0] == "drugSearch"):
-            FDARecall.drugSearch_limit(params[1], params[2])
-        if(params[0] == "foodUpc"):
-            FDARecall.foodUpc_limit(params[1], params[2])
-        if(params[0] == "drugUpc"):
-            FDARecall.drugUpc_limit(params[1], params[2])
+    if(checkCommand(command)):
+        params = command.split(', ')
+        params_length = len(params)
+        if(params_length == 2):
+            if(params[0] == "deviceSearch"):
+                FDARecall.deviceSearch(params[1])
+            if(params[0] == "drugSearch"):
+                FDARecall.drugSearch(params[1])
+            if(params[0] == "foodUpc"):
+                FDARecall.foodUpc(params[1])
+            if(params[0] == "drugUpc"):
+                FDARecall.drugUpc(params[1])
+        if(params_length == 3):
+            if(params[0] == "deviceSearch"):
+                FDARecall.deviceSearch_limit(params[1], params[2])
+            if(params[0] == "drugSearch"):
+                FDARecall.drugSearch_limit(params[1], params[2])
+            if(params[0] == "foodUpc"):
+                FDARecall.foodUpc_limit(params[1], params[2])
+            if(params[0] == "drugUpc"):
+                FDARecall.drugUpc_limit(params[1], params[2]) 
 
 def run_UPCLookup():
     print("\tUPCLookup:")
@@ -75,7 +79,23 @@ def run_UPCLookup():
     command = input("\tcommand: ")
     UPCLookup.lookup(command)
 
+def checkCommand(command):
+    if(command.find(',') == -1):
+        logging.error("Please separate inputs by comma")
+        return False
+    else:
+        return True
+
+def checkKey():
+    if(SavannaAPI.APIKey == ""):
+        logging.error("APIKEY is empty")
+        return False
+    else:
+        return True
+
 def main():
+    if(checkKey() == False):
+        return
     display_title_bar()
     prompt = input("\tEnter number 1 through 3: ")
     if(prompt == '1'):
