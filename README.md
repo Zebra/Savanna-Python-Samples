@@ -12,7 +12,7 @@ Requirements
 
 This sample is developed to run against Python3.
 
-This sample requires the `jsonpickly` module to be installed. You can install it using the following command:
+This sample requires the `jsonpickle` module to be installed. You can install it using the following command:
 ```
 $> python3 -m pip install jsonpickle
 ```

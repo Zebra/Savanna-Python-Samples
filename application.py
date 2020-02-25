@@ -1,7 +1,5 @@
 import os
 import logging
-from pathlib import Path
-from time import sleep
 from savanna.CreateBarcode import CreateBarcode
 from savanna.FDARecall import FDARecall
 from savanna.UPCLookup import UPCLookup
@@ -34,9 +32,13 @@ def run_CreateBarcode():
             fileBytes = CreateBarcode.create_symbology_text_scale_rotation_includeText(params[0], params[1], params[2], params[3], params[4])
         if(params_length == 6):
             fileBytes = CreateBarcode.create_symbology_text_scaleX_scaleY_rotation_includeText(params[0], params[1], params[2], params[3], params[4], params[5])
-        barcodeFile = open("barcode.png", "wb")
-        barcodeFile.write(fileBytes)
-        print("File      Path:", Path(barcodeFile).absolute())
+        try:
+            barcodeFile = open("barcode.png", "wb")
+            barcodeFile.write(fileBytes)
+            print("File saved to Savanna-Python-Samples/barcode.png")
+        except RuntimeError as error:
+            logging.error("Unable to write byte array to file\nError: {}".format(RuntimeError))
+        
 
 def run_FDARecall():
     print("\tFDARecall:")
@@ -75,7 +77,7 @@ def run_FDARecall():
 def run_UPCLookup():
     print("\tUPCLookup:")
     print("\tinput should follow:")
-    print("\t9781483922973")
+    print("\tupc (9781483922973)")
     command = input("\tcommand: ")
     UPCLookup.lookup(command)
 
@@ -88,15 +90,16 @@ def checkCommand(command):
 
 def checkKey():
     if(SavannaAPI.APIKey == ""):
-        logging.error("APIKEY is empty")
+        logging.error(" APIKEY is empty, read the README.md" + 
+        " for instructions on how to obtain an APIKEY")
         return False
     else:
         return True
 
 def main():
+    display_title_bar()
     if(checkKey() == False):
         return
-    display_title_bar()
     prompt = input("\tEnter number 1 through 3: ")
     if(prompt == '1'):
         run_CreateBarcode()

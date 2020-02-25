@@ -45,5 +45,5 @@ class Error:
     String version of the Error message formated for the console.
     """
     def __str__(self):
-        errorString = "\nError Code: {}\nInfo: {}\nMessage:{}\n".format(self.code,self.info,self.message)
+        errorString = "\nError Code: {}\nInfo: {}\nMessage: {}\n".format(self.code,self.info,self.message)
         return errorString
