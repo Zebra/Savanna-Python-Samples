@@ -11,7 +11,8 @@ Requirements
 This sample is developed to run against Python3.
 
 This sample requires the `jsonpickle` module to be installed. You can install it using the following command:
-```
+
+```bash
 $> python3 -m pip install jsonpickle
 ```
 
@@ -20,7 +21,7 @@ Before running the sample you must edit the `application.py` file and enter your
 To Run the Sample
 --------
 
-```
+```bash
 python3 application.py
 ```
 
